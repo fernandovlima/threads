@@ -1,5 +1,5 @@
 import { sidebarLinks } from "@/constants/navigation";
-import { Heart, Home, Newspaper, Search, User2 } from "lucide-react";
+import { Heart, Home, ImagePlus, Search, User2 } from "lucide-react";
 import { MenuLink } from "@/components/shared/MenuLink";
 import { SignOutButton } from "@/components/shared/SignOutButton";
 
@@ -11,8 +11,8 @@ export function renderIcon(icon: string) {
       return <Search size={18} />;
     case "Heart":
       return <Heart size={18} />;
-    case "Newspaper":
-      return <Newspaper size={18} />;
+    case "Create":
+      return <ImagePlus size={18} />;
     case "User2":
       return <User2 size={18} />;
   }

@@ -21,9 +21,9 @@ export const sidebarLinks: SidebarLink[] = [
     icon: "Heart",
   },
   {
-    name: "Create",
+    name: "Create Thread",
     path: "/create-thread",
-    icon: "Newspaper",
+    icon: "Create",
   },
   {
     name: "Profile",
