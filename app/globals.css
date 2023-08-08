@@ -1,78 +1,90 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 20 14.3% 4.1%;
- 
-    --muted: 60 4.8% 95.9%;
-    --muted-foreground: 25 5.3% 44.7%;
- 
-    --popover: 0 0% 100%;
-    --popover-foreground: 20 14.3% 4.1%;
- 
-    --card: 0 0% 100%;
-    --card-foreground: 20 14.3% 4.1%;
- 
-    --border: 20 5.9% 90%;
-    --input: 20 5.9% 90%;
- 
-    --primary: 24 9.8% 10%;
-    --primary-foreground: 60 9.1% 97.8%;
- 
-    --secondary: 60 4.8% 95.9%;
-    --secondary-foreground: 24 9.8% 10%;
- 
-    --accent: 60 4.8% 95.9%;
-    --accent-foreground: 24 9.8% 10%;
- 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 60 9.1% 97.8%;
- 
-    --ring: 24 5.4% 63.9%;
- 
-    --radius: 0.5rem;
-  }
- 
-  .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 60 9.1% 97.8%;
- 
-    --muted: 12 6.5% 15.1%;
-    --muted-foreground: 24 5.4% 63.9%;
- 
-    --popover: 20 14.3% 4.1%;
-    --popover-foreground: 60 9.1% 97.8%;
- 
-    --card: 20 14.3% 4.1%;
-    --card-foreground: 60 9.1% 97.8%;
- 
-    --border: 12 6.5% 15.1%;
-    --input: 12 6.5% 15.1%;
- 
-    --primary: 60 9.1% 97.8%;
-    --primary-foreground: 24 9.8% 10%;
- 
-    --secondary: 12 6.5% 15.1%;
-    --secondary-foreground: 60 9.1% 97.8%;
- 
-    --accent: 12 6.5% 15.1%;
-    --accent-foreground: 60 9.1% 97.8%;
- 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 85.7% 97.3%;
- 
-    --ring: 12 6.5% 15.1%;
-  }
+
+
+body {
+    @apply bg-slate-950 text-slate-50;
 }
- 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+
+@layer components {
+    .main-container {
+        @apply flex min-h-screen flex-1 flex-col items-center bg-slate-950 px-6 pb-10 pt-28 max-md:pb-32 sm:px-10;
+    }
+
+    /* Head Text */
+    .head-text {
+        @apply text-2xl font-bold text-slate-50;
+    }
 }
+
+@layer utilities {
+    .css-invert {
+        @apply invert-[50%] brightness-200;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 3px;
+        height: 3px;
+        border-radius: 2px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: #09090a;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #5c5c7b;
+        border-radius: 50px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #7878a3;
+    }
+}
+
+/* Clerk Responsive fix */
+.cl-organizationSwitcherTrigger .cl-userPreview .cl-userPreviewTextContainer {
+    @apply max-sm:hidden;
+}
+
+.cl-organizationSwitcherTrigger
+.cl-organizationPreview
+.cl-organizationPreviewTextContainer {
+    @apply max-sm:hidden;
+}
+
+/* Shadcn Component Styles */
+
+/* Tab */
+.tab {
+    @apply flex min-h-[50px] flex-1 items-center gap-3 bg-slate-950 text-slate-300 data-[state=active]:bg-[#0e0e12] data-[state=active]:text-slate-300 !important;
+}
+
+.no-focus {
+    @apply focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
+}
+
+/* Account Profile  */
+.account-form_image-label {
+    @apply flex h-24 w-24 items-center justify-center rounded-full bg-slate-700 !important;
+}
+
+.account-form_image-input {
+    @apply cursor-pointer border-none bg-transparent outline-none file:text-blue-400 !important;
+}
+
+.account-form_input {
+    @apply border border-slate-700 bg-slate-800 text-slate-100 !important;
+}
+
+/* Comment Form */
+.comment-form {
+    @apply mt-10 flex items-center gap-4 border-y border-y-slate-700 py-5 !important;
+}
+
+.comment-form_btn {
+    @apply rounded-3xl bg-indigo-500 px-8 py-2 text-slate-100 !important;
+}
+
+
