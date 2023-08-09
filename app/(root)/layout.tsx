@@ -9,6 +9,7 @@ import { MobileNavigation } from "@/components/shared/MobileNavigation";
 import { Header } from "@/components/shared/Header";
 import { LeftSideBar } from "@/components/shared/LeftSideBar";
 import { RightSideBar } from "@/components/shared/RightSideBar";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </main>
 
           <MobileNavigation />
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>

@@ -1,22 +1,8 @@
 import { sidebarLinks } from "@/constants/navigation";
-import { Heart, Home, ImagePlus, Search, User2 } from "lucide-react";
 import { MenuLink } from "@/components/shared/MenuLink";
 import { SignOutButton } from "@/components/shared/SignOutButton";
+import { renderIcon } from "@/utils/icons";
 
-export function renderIcon(icon: string) {
-  switch (icon) {
-    case "Home":
-      return <Home size={18} />;
-    case "Search":
-      return <Search size={18} />;
-    case "Heart":
-      return <Heart size={18} />;
-    case "Create":
-      return <ImagePlus size={18} />;
-    case "User2":
-      return <User2 size={18} />;
-  }
-}
 export function LeftSideBar() {
   return (
     <section

@@ -1,10 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-
-import { formatDateString } from "@/lib/utils";
 import DeleteThread from "../forms/DeleteThread";
 import { Heart, TextQuote } from "lucide-react";
 import { HoverTip } from "@/components/shared/HoverTip";
+import { formatDateString } from "@/lib/utils";
 
 interface Props {
   id: string;
@@ -44,7 +43,7 @@ export default function ThreadCard({
   return (
     <article
       className={`flex w-full flex-col rounded-xl ${
-        isComment ? "px-0 xs:px-7" : "bg-slate-800 p-7"
+        isComment ? "p-6 xs:px-7" : "bg-slate-800 p-7"
       }`}
     >
       <div className="flex items-start justify-between">
@@ -59,7 +58,7 @@ export default function ThreadCard({
               />
             </Link>
 
-            <div className="thread-card_bar" />
+            <div className="relative mt-2 w-0.5 grow rounded-full bg-slate-700" />
           </div>
 
           <div className="flex w-full flex-col">
@@ -78,7 +77,9 @@ export default function ThreadCard({
                 </HoverTip>
 
                 <HoverTip tip={"Reply"}>
-                  <TextQuote size={20} />
+                  <Link href={`/thread/${id}`}>
+                    <TextQuote size={20} />
+                  </Link>
                 </HoverTip>
               </div>
 

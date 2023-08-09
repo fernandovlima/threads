@@ -1,6 +1,6 @@
 import { sidebarLinks } from "@/constants/navigation";
 import { MenuLink } from "@/components/shared/MenuLink";
-import { renderIcon } from "@/components/shared/LeftSideBar";
+import { renderIcon } from "@/utils/icons";
 
 export function MobileNavigation() {
   return (

@@ -1,9 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
 import { deleteThread } from "@/lib/actions/thread.actions";
+import { Trash } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
 
 interface Props {
   threadId: string;
@@ -26,18 +28,22 @@ export default function DeleteThread({
   if (currentUserId !== authorId || pathname === "/") return null;
 
   return (
-    <Image
-      src="/assets/delete.svg"
-      alt="delte"
-      width={18}
-      height={18}
-      className="cursor-pointer object-contain"
+    <Button
+      className="cursor-pointer text-red-400 hover:text-red-600 transition-colors"
       onClick={async () => {
         await deleteThread(JSON.parse(threadId), pathname);
         if (!parentId || !isComment) {
           router.push("/");
         }
+        setTimeout(() => {
+          toast({
+            title: "Thread deleted.",
+            className: "bg-green-600 border-0",
+          });
+        }, 600);
       }}
-    />
+    >
+      <Trash size={18} />
+    </Button>
   );
 }
