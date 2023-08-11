@@ -62,7 +62,7 @@ export default function ThreadCard({
           </div>
 
           <div className="flex w-full flex-col">
-            <Link href={`/profile/${author.id}`} className="w-fit">
+            <Link href={`/profile/${author?.id}`} className="w-fit">
               <h4 className="cursor-pointer text-base-semibold text-slate-100">
                 {author.name}
               </h4>

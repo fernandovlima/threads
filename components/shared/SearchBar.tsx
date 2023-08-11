@@ -25,7 +25,7 @@ export function Searchbar({ routeType }: Props) {
     }, 300);
 
     return () => clearTimeout(delayDebounceFn);
-  }, [search, routeType]);
+  }, [search, routeType, router]);
 
   return (
     <div className="flex items-center gap-1 rounded-lg bg-slate-800 px-4 py-2">

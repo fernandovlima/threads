@@ -19,7 +19,13 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
       }}
     >
       <html lang="en">
-        <body className={`${inter.className} `}>{children}</body>
+        <body className={`${inter.className}`}>
+          <div
+            className={"w-full flex justify-center items-center min-h-screen"}
+          >
+            {children}
+          </div>
+        </body>
       </html>
     </ClerkProvider>
   );

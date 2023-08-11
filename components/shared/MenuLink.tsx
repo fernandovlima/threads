@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@clerk/nextjs";
 
 interface MenuLinkProps {
   path: string;
@@ -11,6 +12,11 @@ interface MenuLinkProps {
 export function MenuLink({ path, children }: MenuLinkProps) {
   const pathname = usePathname();
   const isActive = pathname === path;
+
+  const { userId } = useAuth();
+
+  if (path === "/profile") path = `${path}/${userId}`;
+
   return (
     <Link
       href={path}

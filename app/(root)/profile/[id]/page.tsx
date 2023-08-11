@@ -1,21 +1,13 @@
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
-
 import { profileTabs } from "@/constants/profile";
-
-// import ThreadsTab from "@/components/shared/ThreadsTab";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
 import { fetchUser } from "@/lib/actions/user.actions";
-import { renderIcon } from "@/utils/icons";
 import ProfileHeader from "@/components/shared/ProfileHeader";
 import ThreadsTab from "@/components/shared/ThreadTab";
+import { renderIcon } from "@/utils/icons";
 
-export default async function ProfilePage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function Page({ params }: { params: { id: string } }) {
   const user = await currentUser();
   if (!user) return null;
 

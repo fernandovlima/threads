@@ -66,7 +66,7 @@ export async function fetchUserPosts(userId: string) {
     connectToDatabase();
 
     // Find all threads authored by the user with the given userId
-    const threads = await User.findOne({ id: userId }).populate({
+    return await User.findOne({ id: userId }).populate({
       path: "threads",
       model: Thread,
       populate: [
@@ -86,7 +86,6 @@ export async function fetchUserPosts(userId: string) {
         },
       ],
     });
-    return threads;
   } catch (error) {
     console.error("Error fetching user threads:", error);
     throw error;
@@ -108,7 +107,7 @@ export async function fetchUsers({
   sortBy?: SortOrder;
 }) {
   try {
-    connectToDatabase();
+    await connectToDatabase();
 
     // Calculate the number of users to skip based on the page number and page size.
     const skipAmount = (pageNumber - 1) * pageSize;
@@ -148,6 +147,35 @@ export async function fetchUsers({
     return { users, isNext };
   } catch (error) {
     console.error("Error fetching users:", error);
+    throw error;
+  }
+}
+
+export async function getActivity(userId: string) {
+  try {
+    await connectToDatabase();
+
+    // Find all threads created by the user
+    const userThreads = await Thread.find({
+      author: "64d40190493de0fca7aae735",
+    });
+
+    // Collect all the child thread ids (replies) from the 'children' field of each user thread
+    const childThreadIds = userThreads.reduce((acc, userThread) => {
+      return acc.concat(userThread.children);
+    }, []);
+
+    // Find and return the child threads (replies) excluding the ones created by the same user
+    return await Thread.find({
+      _id: { $in: childThreadIds },
+      author: { $ne: userId }, // Exclude threads authored by the same user
+    }).populate({
+      path: "author",
+      model: User,
+      select: "name image _id",
+    });
+  } catch (error) {
+    console.error("Error fetching replies: ", error);
     throw error;
   }
 }

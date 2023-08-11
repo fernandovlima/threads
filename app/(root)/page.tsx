@@ -3,7 +3,7 @@ import { currentUser } from "@clerk/nextjs";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { redirect } from "next/navigation";
 import ThreadCard from "@/components/cards/ThreadCard";
-import Pagination from "@/components/shared/Pagination";
+import { Pagination } from "@/components/shared/Pagination";
 
 export default async function Home({
   searchParams,
